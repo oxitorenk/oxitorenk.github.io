@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oxitorenk | projects</title>
+    <meta name="description" content="A hub for my silly little projects.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico"> 
+    <!-- Google Fonts: Inter for clean, modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>oxitorenk</h1>
+            <p class="subtitle">silly little projects hub</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="grid" id="project-grid">
+            <!-- Project Cards will be injected here or hardcoded -->
+            
+            <!-- Example Card 1 -->
+            <a href="https://github.com/oxitorenk/example-project-1" class="card" target="_blank">
+                <div class="card-content">
+                    <h2>Project One</h2>
+                    <p>A small description of what this project does. Maybe it's a game, maybe a tool.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="tag">Utility</span>
+                    <span class="arrow">→</span>
+                </div>
+            </a>
+
+            <!-- Example Card 2 -->
+            <a href="#" class="card" target="_blank">
+                <div class="card-content">
+                    <h2>Another Thing</h2>
+                    <p>Just a placeholder for another cool thing I made.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="tag">Experiment</span>
+                    <span class="arrow">→</span>
+                </div>
+            </a>
+
+            <!-- Example Card 3 -->
+            <a href="#" class="card" target="_blank">
+                <div class="card-content">
+                    <h2>Pixel Art Gen</h2>
+                    <p>Generates random pixel art because why not.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="tag">Creative</span>
+                    <span class="arrow">→</span>
+                </div>
+            </a>
+
+             <!-- Example Card 4 -->
+             <a href="#" class="card" target="_blank">
+                <div class="card-content">
+                    <h2>Discord Bot</h2>
+                    <p>Beep boop. A bot that does absolutely nothing useful.</p>
+                </div>
+                <div class="card-footer">
+                    <span class="tag">Bot</span>
+                    <span class="arrow">→</span>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="year"></span> oxitorenk. <a href="https://github.com/oxitorenk" target="_blank">Github</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
