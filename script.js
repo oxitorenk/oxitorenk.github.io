@@ -1,17 +1,47 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Set current year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
+    const themeBtn = document.getElementById('theme-btn');
 
-    // Subtle fade-in for cards (optional)
-    const cards = document.querySelectorAll('.card');
-    cards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(10px)';
-        card.style.transition = `opacity 0.4s ease, transform 0.4s ease`;
-        
-        setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-        }, 100 * (index + 1));
-    });
+    // State
+    let _theme = 'dark'; // Default
+
+    function loadState() {
+        const saved = localStorage.getItem('hub_theme');
+        if (saved) {
+            _theme = saved;
+        }
+        applyTheme();
+    }
+
+    function saveState() {
+        localStorage.setItem('hub_theme', _theme);
+    }
+
+    function toggleTheme() {
+        _theme = _theme === 'dark' ? 'light' : 'dark';
+        saveState();
+        applyTheme();
+    }
+
+    function applyTheme() {
+        const isLight = _theme === 'light';
+        if (isLight) {
+            document.body.setAttribute('data-theme', 'light');
+            // Moon Icon
+            themeBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+            // Update meta theme color
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#F2F2F7');
+        } else {
+            document.body.removeAttribute('data-theme');
+            // Sun Icon
+            themeBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>';
+            // Update meta theme color
+            document.querySelector('meta[name="theme-color"]').setAttribute('content', '#000000');
+        }
+    }
+
+    // Init
+    loadState();
+
+    // Listeners
+    themeBtn.addEventListener('click', toggleTheme);
 });
