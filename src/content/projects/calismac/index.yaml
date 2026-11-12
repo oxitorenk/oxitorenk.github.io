@@ -1,0 +1,12 @@
+name: Çalışmaç
+section: apps
+order: 2
+description: A simple place to practice for your next exam. Work through questions from your own Google Sheets question bank.
+icon: ./icon.png
+links:
+  - label: Open app
+    url: https://oxitorenk.github.io/calismac/
+    kind: app
+  - label: GitHub
+    url: https://github.com/oxitorenk/calismac
+    kind: github

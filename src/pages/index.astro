@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import ProjectCard from '../components/ProjectCard.astro';
+import '@fontsource-variable/manrope';
+import '../styles/global.css';
+
+const sections = (await getCollection('sections')).sort((a, b) => a.data.order - b.data.order || a.id.localeCompare(b.id));
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order || a.id.localeCompare(b.id));
+const sectionIds = new Set(sections.map((section) => section.id));
+for (const project of projects) {
+  if (!sectionIds.has(project.data.section.id)) throw new Error(`Unknown section for ${project.data.name}`);
+}
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="A small collection of apps and Unity tools by oxitorenk. Find something useful, open it, and make it yours." />
+    <meta name="theme-color" content="#f7f6f2" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>oxitorenk — Apps & Tools</title>
+  </head>
+  <body>
+    <header class="site-header flex items-center justify-between">
+      <a class="wordmark" href="/" aria-label="oxitorenk home">oxitorenk</a>
+      <nav aria-label="Main navigation">
+        <a href="https://oxitorenk.github.io/portfolio/">Portfolio</a>
+        <a href="https://github.com/oxitorenk?tab=repositories">Repositories</a>
+        <a href="mailto:Akbulutoguzhan@outlook.com.tr">Contact me</a>
+      </nav>
+    </header>
+    <main id="main">
+      <h1 class="sr-only">Apps and tools by oxitorenk</h1>
+      {sections.map((section) => (
+        <section aria-labelledby={`section-${section.id}`}>
+          <div class="section-heading"><h2 id={`section-${section.id}`}>{section.data.title}</h2></div>
+          <div class="project-grid grid">
+            {projects.filter((project) => project.data.section.id === section.id).map((project) => <ProjectCard project={project} />)}
+          </div>
+        </section>
+      ))}
+    </main>
+  </body>
+</html>

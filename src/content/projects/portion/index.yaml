@@ -1,0 +1,12 @@
+name: Portion
+section: apps
+order: 1
+description: Your recipes, perfectly portioned. Keep them together and scale ingredients and calories to any number of servings.
+icon: ./icon.png
+links:
+  - label: Open app
+    url: https://oxitorenk.github.io/portion/
+    kind: app
+  - label: GitHub
+    url: https://github.com/oxitorenk/portion
+    kind: github
